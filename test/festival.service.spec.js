@@ -11,10 +11,33 @@ describe('festival service', function () {
         $rootScope = _$rootScope_;
     }));
 
+    beforeEach(function () {
+        jasmine.addMatchers({
+            toBeAPromise: function () {
+                return {
+                    compare: function (promise) {
+                        return {
+                            pass: !!promise.then,
+                            message: "Expected " + promise + " to be a promise."
+                        };
+                    }
+                }
+            }
+        });
+    });
+
     describe('getFestivals', function () {
         var festivalsMock;
         beforeEach(function () {
             festivalsMock = $httpBackend.whenGET('../data/festivals.json').respond(200, 'test');
+        });
+
+        it('should be defined', function () {
+            expect(festivalService).toBeDefined();
+        });
+
+        it('should return a promise', function () {
+            expect(festivalService.getFestivals()).toBeAPromise();
         });
 
         it('should call the correct festivals url', function () {
@@ -54,4 +77,5 @@ describe('festival service', function () {
         $httpBackend.flush();
         $httpBackend.expectGET('../data/testing.json');
     });
-});
+})
+;
