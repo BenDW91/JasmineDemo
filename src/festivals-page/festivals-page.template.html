@@ -1,0 +1,8 @@
+<section>
+    <button ng-click="$ctrl.maxRating = !$ctrl.maxRating">Max rating only</button>
+    <ul>
+        <li ng-repeat="festival in $ctrl.festivals | maxRating: $ctrl.maxRating" ui-sref="festival-details-page({festivalName: festival.name})">
+            <span ng-bind="festival.name"></span>
+        </li>
+    </ul>
+</section>
