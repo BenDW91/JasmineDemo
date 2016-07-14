@@ -1,5 +1,5 @@
 describe('festival-details', function () {
-    var component,
+    var controller,
         testHelper;
 
     beforeEach(module('festivalApp.mocks'));
@@ -11,9 +11,9 @@ describe('festival-details', function () {
 
     it('should sort the festivals alphabetically', function(){
         createController();
-        component.festivals = [{name: 'b'}, {name: 'a'}, {name: 'be'}, {name: 'a'}];
-        component.sortFestivals();
-        expect(component.festivals).toEqual([{name: 'a'}, {name: 'a'}, {name: 'b'}, {name: 'be'}]);
+        controller.festivals = [{name: 'b'}, {name: 'a'}, {name: 'be'}, {name: 'a'}];
+        controller.sortFestivals();
+        expect(controller.festivals).toEqual([{name: 'a'}, {name: 'a'}, {name: 'b'}, {name: 'be'}]);
     });
 
     it('should call festival service on load', function(){
@@ -23,7 +23,7 @@ describe('festival-details', function () {
     });
 
     function createController() {
-        component = testHelper.createComponentController('festivalsPage', ['festivalService']);
+        controller = testHelper.createController('festivalsPageController', ['festivalService']);
         testHelper.scopeMock.$digest();
     }
 });

@@ -2,9 +2,9 @@
     angular.module('festivalApp.mocks', [])
         .factory('testHelper', testHelper);
 
-    testHelper.$inject = ['$componentController', '$q', '$rootScope'];
+    testHelper.$inject = ['$controller', '$q', '$rootScope'];
 
-    function testHelper($componentController, $q, $rootScope) {
+    function testHelper($controller, $q, $rootScope) {
         var testHelper = {
             festivals: [],
             festivalDetails: {},
@@ -19,13 +19,13 @@
             scopeMock: $rootScope.$new(),
             getPromise: getPromise,
             $stateParamsMock: {festivalName: 'test'},
-            createComponentController: createComponentController
+            createController: createController
         };
 
         return testHelper;
 
-        function createComponentController(component, dependenciesToMock) {
-            return $componentController(component, getMockedDependencies(dependenciesToMock));
+        function createController(controller, dependenciesToMock) {
+            return $controller(controller, getMockedDependencies(dependenciesToMock));
         }
 
         function getMockedDependencies(dependenciesToMock) {

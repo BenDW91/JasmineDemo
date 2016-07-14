@@ -11,7 +11,6 @@ describe('routing', function () {
 
     it('should go to the correct festivals-page url', function(){
         goTo('/festivals');
-        $rootScope.$digest();
 
         expect($state.current).toEqual({
             url: '/festivals',
@@ -22,7 +21,6 @@ describe('routing', function () {
 
     it('should go to the correct festivals-details url', function(){
         goTo('/festival-detail/test');
-        $rootScope.$digest();
 
         expect($state.current).toEqual({
             url: '/festival-detail/:festivalName',
@@ -33,7 +31,6 @@ describe('routing', function () {
 
     it('should go to the default state if the url isn\'t defined', function(){
         goTo('/test/test');
-        $rootScope.$digest();
         expect($state.current.url).toBe('/festivals');
     });
 
@@ -41,5 +38,4 @@ describe('routing', function () {
         $location.url(url);
         $rootScope.$digest();
     }
-
 });
