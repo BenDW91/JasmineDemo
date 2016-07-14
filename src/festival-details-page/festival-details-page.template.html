@@ -1,3 +1,5 @@
 <section>
-    {{$ctrl.festivalDetails}}
+    <h1 ng-bind="$ctrl.festivalDetails.name"></h1>
+    <div><span>website:</span> <span ng-bind="$ctrl.festivalDetails.website"></span></div>
+    <p ng-bind="$ctrl.festivalDetails.description"></p>
 </section>
